@@ -1,6 +1,8 @@
 // src/pages/GiftHome.js
 import React from 'react';
 import Navbar from '../components/Navbar';
+import dummyProducts from '../data/dummyProducts';
+import ProductCard from '../components/ProductCard';
 
 const GiftHome = () => {
   return (
@@ -67,7 +69,7 @@ const GiftHome = () => {
             </button>
             <button style={{
               background: 'transparent',
-              color: '#004d40',
+              color: '#004d40', 
               border: '2px solid #004d40',
               padding: '14px 38px',
               borderRadius: '50px',
@@ -97,46 +99,27 @@ const GiftHome = () => {
         </div>
       </div>
 
-      {/* PERSONALIZED GIFTS SECTION */}
-      <div style={{ textAlign: 'center', padding: '120px 60px 100px' }}>
-        <h2 style={{ fontSize: '48px', color: '#004d40', marginBottom: '16px', fontWeight: '700' }}>
-          Personalized Gifts
+           {/* FEATURED PRODUCTS SECTION – இதை footer-க்கு மேல paste பண்ணு */}
+      <div style={{ padding: '100px 60px', backgroundColor: '#fff' }}>
+        <h2 style={{ 
+          textAlign: 'center', 
+          fontSize: '48px', 
+          color: '#004d40', 
+          marginBottom: '60px',
+          fontWeight: '700'
+        }}>
+          Featured Products
         </h2>
-        <p style={{ fontSize: '19px', color: '#555', maxWidth: '800px', margin: '0 auto 70px' }}>
-          Craft unique memories with gifts tailored to perfection. Experience them in 3D before you buy!
-        </p>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '50px', flexWrap: 'wrap' }}>
-          {[
-            { name: "Engraved Mugs", img: "https://i.imgur.com/8f3j2kD.jpeg" },
-            { name: "Photo Frames", img: "https://i.imgur.com/3mR7vP2.jpeg" },
-            { name: "Nameplates", img: "https://i.imgur.com/7pQ9xZs.jpeg" }
-          ].map((item) => (
-            <div key={item.name} style={{
-              background: 'white',
-              borderRadius: '32px',
-              overflow: 'hidden',
-              width: '340px',
-              boxShadow: '0 20px 45px rgba(0,0,0,0.12)',
-              transition: '0.4s'
-            }} onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-15px)'}
-               onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}>
-              <img src={item.img} alt={item.name} style={{ width: '100%', height: '260px', objectFit: 'cover' }} />
-              <div style={{ padding: '30px' }}>
-                <h3 style={{ fontSize: '24px', marginBottom: '16px', color: '#004d40' }}>{item.name}</h3>
-                <button style={{
-                  background: '#00695c',
-                  color: 'white',
-                  padding: '12px 34px',
-                  border: 'none',
-                  borderRadius: '50px',
-                  fontSize: '15px',
-                  fontWeight: '600'
-                }}>
-                  3D Preview Option
-                </button>
-              </div>
-            </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+          gap: '40px',
+          maxWidth: '1400px',
+          margin: '0 auto'
+        }}>
+          {dummyProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </div>

@@ -6,7 +6,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    
+     
       <>
         {/* TOP BAR */}
         <div style={{

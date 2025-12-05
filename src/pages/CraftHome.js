@@ -1,13 +1,15 @@
-// src/pages/CraftHome.js → FINAL FIGMA-ACCURATE VERSION
+// src/pages/CraftHome.js → FINAL 100% COMPLETE VERSION
 import React from 'react';
 import Navbar from '../components/Navbar';
+import ProductCard from '../components/ProductCard';
+import dummyCrafts from '../data/dummyCrafts';
 
 const CraftHome = () => {
   return (
     <div style={{ background: '#f8fffe', minHeight: '100vh', fontFamily: "'Poppins', sans-serif" }}>
       <Navbar />
 
-      {/* HERO SECTION – TEXT LEFT + IMAGE RIGHT (LIKE GIFT HOME) */}
+      {/* HERO SECTION */}
       <div style={{
         background: 'linear-gradient(135deg, #b2dfdb 0%, #e0f7fa 100%)',
         borderRadius: '0 0 180px 180px',
@@ -19,7 +21,6 @@ const CraftHome = () => {
         justifyContent: 'center',
         gap: '80px'
       }}>
-        {/* Decorative circle */}
         <div style={{
           position: 'absolute',
           top: '-200px',
@@ -31,7 +32,6 @@ const CraftHome = () => {
           opacity: 0.1
         }}></div>
 
-        {/* TEXT – LEFT SIDE */}
         <div style={{ maxWidth: '600px', zIndex: 2 }}>
           <h1 style={{
             fontSize: '64px',
@@ -42,7 +42,6 @@ const CraftHome = () => {
           }}>
             Where Every Craft<br />Tells a Story
           </h1>
-
           <p style={{
             fontSize: '20px',
             color: '#2e7d72',
@@ -51,7 +50,6 @@ const CraftHome = () => {
           }}>
             Discover handcrafted wonders and unique artisanal expressions.
           </p>
-
           <div style={{ display: 'flex', gap: '20px' }}>
             <button style={{
               background: '#004d40',
@@ -62,9 +60,7 @@ const CraftHome = () => {
               fontSize: '18px',
               fontWeight: '600',
               cursor: 'pointer'
-            }}>
-              Explore Crafts
-            </button>
+            }}>Explore Crafts</button>
             <button style={{
               background: 'transparent',
               color: '#004d40',
@@ -74,13 +70,10 @@ const CraftHome = () => {
               fontSize: '18px',
               fontWeight: '600',
               cursor: 'pointer'
-            }}>
-              Start Selling
-            </button>
+            }}>Start Selling</button>
           </div>
         </div>
 
-        {/* IMAGE – RIGHT SIDE */}
         <div style={{ flexShrink: 0 }}>
           <img
             src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80"
@@ -97,71 +90,30 @@ const CraftHome = () => {
         </div>
       </div>
 
-      {/* FEATURED CRAFTS – 100% FIGMA MATCH */}
-      <div style={{ padding: '140px 80px', textAlign: 'center' }}>
+      {/* FEATURED CRAFTS GRID – SAME AS GIFT PAGE */}
+      <div style={{ padding: '140px 80px', textAlign: 'center', backgroundColor: '#fff' }}>
         <h2 style={{ fontSize: '48px', color: '#004d40', marginBottom: '80px', fontWeight: '700' }}>
           Featured Crafts
         </h2>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '50px', flexWrap: 'wrap' }}>
-          {[
-            { name: "Enchanted Owl Carving", price: "$120.00", desc: "A meticulously hand-carved wooden owl...", img: "https://images.unsplash.com/photo-1583512603806-077998240c7a?w=600" },
-            { name: "Vibrant Tribal Basket", price: "$85.00", desc: "Handwoven with natural dyes, this basket...", img: "https://images.unsplash.com/photo-1586023492125-27b2c5736457?w=600" },
-            { name: "Abstract Earth Painting", price: "$180.00", desc: "An evocative abstract painting using rich earth tones...", img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=600" }
-          ].map(craft => (
-            <div
-              key={craft.name}
-              style={{
-                background: 'white',
-                borderRadius: '50px',
-                overflow: 'hidden',
-                width: '380px',
-                boxShadow: '0 30px 60px rgba(0,0,0,0.15)',
-                transition: 'all 0.4s ease',
-                cursor: 'pointer'
-              }}
-              onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-20px)'}
-              onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-            >
-              <img src={craft.img} alt={craft.name} style={{ width: '100%', height: '340px', objectFit: 'cover' }} />
-              <div style={{ padding: '36px' }}>
-                <h3 style={{ fontSize: '26px', color: '#004d40', marginBottom: '12px', fontWeight: '700' }}>
-                  {craft.name}
-                </h3>
-                <p style={{ color: '#666', fontSize: '16px', lineHeight: '1.6', marginBottom: '20px' }}>
-                  {craft.desc}
-                </p>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontSize: '28px', fontWeight: '800', color: '#004d40' }}>
-                    {craft.price}
-                  </span>
-                  <button style={{
-                    background: 'transparent',
-                    color: '#004d40',
-                    border: '2px solid #004d40',
-                    padding: '12px 32px',
-                    borderRadius: '50px',
-                    fontSize: '16px',
-                    fontWeight: '600'
-                  }}>
-                    View Craft
-                  </button>
-                </div>
-              </div>
-            </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gap: '50px',
+          maxWidth: '1500px',
+          margin: '0 auto'
+        }}>
+          {dummyCrafts.map((craft) => (
+            <ProductCard key={craft.id} product={craft} />
           ))}
         </div>
       </div>
 
-      {/* Rest of your sections (Shop by Category, Artisans, etc.) can stay as before */}
-      {/* Or I can send the full updated file if you want! */}
-
-{/* MEET OUR ARTISANS */}
+      {/* MEET OUR ARTISANS */}
       <div style={{ padding: '140px 80px', textAlign: 'center' }}>
         <h2 style={{ fontSize: '48px', color: '#004d40', marginBottom: '80px', fontWeight: '700' }}>
           Meet Our Top Artisans
         </h2>
-
         <div style={{ display: 'flex', justifyContent: 'center', gap: '50px', flexWrap: 'wrap' }}>
           {['Elara Stone', 'Kai Lin', 'Arya Sharma'].map((name, i) => (
             <div key={name} style={{
@@ -188,9 +140,7 @@ const CraftHome = () => {
                 padding: '10px 30px',
                 borderRadius: '50px',
                 fontWeight: '600'
-              }}>
-                View Profile
-              </button>
+              }}>View Profile</button>
             </div>
           ))}
         </div>
@@ -265,9 +215,5 @@ const CraftHome = () => {
     </div>
   );
 };
-
-
-
-  
 
 export default CraftHome;

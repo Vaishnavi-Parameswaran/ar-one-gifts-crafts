@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import Signup from './pages/Signup';
 import VerifyEmail from './pages/VerifyEmail';
+import ProductCard from './components/ProductCard';
+
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/verify-email" element={<VerifyEmail />} />
+        <Route path="/product-card" element={<ProductCard />} />
+        
       </Routes>
     </Router>
   );
